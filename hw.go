@@ -13,7 +13,11 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, world.")
+	fmt.Print("Enter your name: ")
+	var username string
+	fmt.Scanln(&username)
+	username = strings.TrimSpace(username)
+	fmt.Printf("Hello, %s!\n", username)
 
 	// An int is a positive or negative number without decimals
 	// Versions
