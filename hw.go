@@ -74,6 +74,7 @@ func main() {
 	fmt.Printf("The value is %t \n", isTrue)
 
 	next()
+	arrays()
 	withSlice()
 	withMaps()
 
@@ -157,14 +158,9 @@ func main() {
 	newFloat, _ := strconv.ParseFloat(randStringFloat, 64)
 	fmt.Println(newFloat)
 
-	http.HandleFunc("/", homePage)
-	http.HandleFunc("/earth", earthPage)
-	http.ListenAndServe(":8080", nil)
-
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 		go count(i)
 	}
-	time.Sleep(time.Millisecond * 10000)
 
 	stringChan := make(chan string)
 	for i := 0; i < 3; i++ {
@@ -172,7 +168,13 @@ func main() {
 		go makeDough(stringChan)
 		go addToppings(stringChan)
 		go addSauce(stringChan)
-		time.Sleep(time.Millisecond * 5000)
+		time.Sleep(time.Millisecond * 3000)
 	}
+	time.Sleep(time.Millisecond * 5000)
+
+	fmt.Print("Serving at http://localhost:8080/ ...")
+	http.HandleFunc("/", homePage)
+	http.HandleFunc("/earth", earthPage)
+	http.ListenAndServe(":8080", nil)
 
 }
