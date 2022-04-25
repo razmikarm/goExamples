@@ -43,6 +43,11 @@ func withSlice() {
 }
 
 func withMaps() {
+	pet := map[string]string{
+		"name": "Rex",
+		"type": "dog",
+	}
+	fmt.Println(pet)
 	pairs := make(map[int][]int)
 	pair := []int{0, 1, 2}
 	pairs[42] = append(pairs[0], pair...)
